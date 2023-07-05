@@ -16,7 +16,7 @@ export const Textual=({movie})=>{
                     {key !== movie.genres.length - 1 && <div>/</div>}
                     </div>
                 ))}
-                </div>
+            </div>
         </div>
         <div className="qualities">
             <i>Available in:</i>

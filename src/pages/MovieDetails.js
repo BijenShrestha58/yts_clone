@@ -8,14 +8,24 @@ import { MovieCard } from "../components/modules/moviecard";
 import { Textual } from "../components/modules/textual";
 import playbutton from "../assets/play-button.png"
 import { DialogBox } from "../components/modules/dialogbox";
+import { DownloadBox } from "../components/modules/downloadbox";
 
 export const MovieDetails=()=>{
     const [movie, setMovie] = useState({torrents:[]});
     const [movies, setMovies] = useState([]);
     const [loading,setLoading] = useState(false);
+    const downloadBoxStyles={
+        marginTop: '10vh',
+        height: '80%',
+        width:'40%',
+        padding:'32px',
+        overflow:'auto',
+
+    };
     const navigate= useNavigate();
     const {id} = useParams();
     const [isVisible, setIsVisible] = useState(false);
+    const [isDownloadVisible, setIsDownloadVisible] = useState(false);
     const trailerurl = `https://www.youtube.com/embed/${movie.yt_trailer_code}`;
 
     useEffect(()=>{
@@ -29,6 +39,7 @@ export const MovieDetails=()=>{
         setMovie(res.data.data?.movie);
         setMovies(res2.data.data?.movies);
         console.log(res.data.data?.movie);
+        console.log(res2.data.data?.movies);
 
         setLoading(false);
     }
@@ -43,9 +54,8 @@ export const MovieDetails=()=>{
             <>
                 <div className="image-box">
                     <div className="image"><img src={movie?.medium_cover_image}/></div>
-                    <div className="button"><a href={movie.torrents[0]?.url}><button className="green"><span class="material-icons">download</span>Download</button></a></div>
+                    <div className="button" onClick={()=>setIsDownloadVisible(true)}><button className="green"><span class="material-icons">download</span>Download</button></div>
                     <div className="button"><a><button className="blue">Watch Now</button></a></div>
-
                 </div>
             </>}
             </div>
@@ -105,6 +115,15 @@ export const MovieDetails=()=>{
     </div>
     <DialogBox close={()=>setIsVisible(false)} open={isVisible}>
         <iframe src={trailerurl}></iframe>
+    </DialogBox>
+    <DialogBox close={()=>setIsDownloadVisible(false)} open={isDownloadVisible} styles={downloadBoxStyles}>
+    <div className="download-title">Select movie quality</div>
+    <div className="download-boxes">
+        {movie.torrents?.map((x,key)=><>
+            <DownloadBox torrent={x}/>
+            </>
+        )}
+    </div>
     </DialogBox>
 </>
 }

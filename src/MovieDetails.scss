@@ -34,35 +34,6 @@
                         width:100%
                     }
                 }
-                .button
-                {
-                    width:100%;
-                    height: 10%;
-                    padding:6px 0;
-                    button{
-                        width:100%;
-                        height: 100%;
-                        border-radius: 4px;
-                        color:white;
-                        font-size: 16px;
-                        font-weight: bold;
-                        border: none;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        cursor: pointer;
-                    &.green{
-                        transition: .3s;
-                        background-color: #6ac045;
-                        &:hover{
-                            background-color: #5da93c;
-                        }
-                    }
-                    &.blue{
-                        background-color: #00FFE7A3;
-                    }
-                    }
-                }
             }
         }
         .text-area
@@ -301,9 +272,62 @@
         height:60%;
         width:60%;
         background-color: white;
+        .close
+        {
+            height: 16px;;
+            width: 16px;
+            top:0px;
+            right: 2px;
+            position: absolute;
+            cursor: pointer;
+            img{
+                height:100%;
+                width: 100%;
+                transition: .2s;
+                &:hover{
+                    filter: brightness(2);
+
+                }
+            }
+        }
         iframe{
             height: 100%;
             width: 100%;
+        }
+        .download-title{
+            color:#6ac045;
+            text-align: center;
+            font-weight:600;
+            font-size: 1.15em;
+            margin-bottom: 32px;
+        }
+        .download-boxes{
+            width: 100%;
+            height: 100%;
+            display:flex;
+            flex-wrap: wrap;
+            .download-box{
+                width: 33%;
+                height: 50%;
+                display: flex;
+                flex-direction: column;
+                border-right: 1px rgb(201, 201, 201) solid;
+                align-items: center;
+                justify-content: flex-end;
+                padding: 8px;
+                margin-bottom: 8px;
+                .type,.size{
+                    font-weight: 700;
+                }
+                .type{
+                    margin-bottom:20px;
+                }
+                
+                .gray{
+                    color:rgb(202, 202, 202);
+                    margin-bottom: 16px;
+                }
+            }
         }
     }
 }
@@ -312,4 +336,33 @@ span{
 }
 a{
     text-decoration: none;
+}
+.button
+{
+    width:100%;
+    height: 50px;
+    padding:6px 0;
+    button{
+        width:100%;
+        height: 100%;
+        border-radius: 4px;
+        color:white;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    &.green{
+        transition: .3s;
+        background-color: #6ac045;
+        &:hover{
+            background-color: #5da93c;
+        }
+    }
+    &.blue{
+        background-color: #00FFE7A3;
+    }
+    }
 }
