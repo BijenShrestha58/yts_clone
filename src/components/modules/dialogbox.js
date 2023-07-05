@@ -5,5 +5,5 @@ export const DialogBox=(props)=>{
     <div className="dialog-box slideTop">
         {props.children}
     </div>
-    </div>: <></>
+    </div>: <></> 
 }

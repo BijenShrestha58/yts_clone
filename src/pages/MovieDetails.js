@@ -16,7 +16,7 @@ export const MovieDetails=()=>{
     const navigate= useNavigate();
     const {id} = useParams();
     const [isVisible, setIsVisible] = useState(false);
-    const trailerurl = `https://www.youtube.com/watch?v=${movie.yt_trailer_code}`;
+    const trailerurl = `https://www.youtube.com/embed/${movie.yt_trailer_code}`;
 
     useEffect(()=>{
         loadMovie();
