@@ -22,6 +22,7 @@ export const MovieDetails=()=>{
         overflow:'auto',
 
     };
+
     const navigate= useNavigate();
     const {id} = useParams();
     const [isVisible, setIsVisible] = useState(false);
